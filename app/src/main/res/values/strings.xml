@@ -4,4 +4,13 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_addActivity">Add Activity</string>
+    <string name="user_type">User Type</string>
+    <string-array name="userType_spinner">
+        <item>Individual</item>
+        <item>Organization</item>
+    </string-array>
+    <string-array name="fuelType_spinner">
+        <item>Petrol</item>
+        <item>Diesel</item>
+    </string-array>
 </resources>

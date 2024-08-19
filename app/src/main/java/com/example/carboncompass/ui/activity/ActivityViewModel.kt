@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 
 class ActivityViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is activity Fragment"
+    private val _textArray = MutableLiveData<Array<String>>().apply {
+        value = arrayOf("Individual","Organization")
     }
-    val text: LiveData<String> = _text
+    val textArray: LiveData<Array<String>> = _textArray
 }
