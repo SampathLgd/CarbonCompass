@@ -7,19 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/editTextText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="Your Progress"
-        android:textSize="32sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <ProgressBar
         android:id="@+id/progressBar_today"
         style="?android:attr/progressBarStyleHorizontal"
@@ -32,7 +19,7 @@
         android:progressDrawable="@drawable/circular_progress_drawable"
         app:layout_constraintWidth_percent="0.45"
         app:layout_constraintHeight_percent="0.3"
-        app:layout_constraintTop_toBottomOf="@id/editTextText"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/progressBar2_yesterday" />
 
@@ -48,7 +35,7 @@
         android:progressDrawable="@drawable/circular_progress_drawable"
         app:layout_constraintWidth_percent="0.45"
         app:layout_constraintHeight_percent="0.3"
-        app:layout_constraintTop_toBottomOf="@id/editTextText"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/progressBar_today"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -58,8 +45,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="Today"
-        android:textSize="32sp"
+        android:text="Daily"
+        android:textSize="20sp"
+        android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@id/progressBar_today"
         app:layout_constraintStart_toStartOf="@id/progressBar_today"
         app:layout_constraintEnd_toEndOf="@id/progressBar_today" />
@@ -70,32 +58,33 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="This Week"
-        android:textSize="32sp"
+        android:text="Weekly"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/progressBar2_yesterday"
         app:layout_constraintStart_toStartOf="@id/progressBar2_yesterday"
         app:layout_constraintEnd_toEndOf="@id/progressBar2_yesterday" />
 
     <EditText
         android:id="@+id/today_Goal"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter Today Carbon emission goal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.005"
+        android:hint="Enter Weekly Carbon emission goal (kg)"
+        android:layout_marginTop="32dp"
+        app:layout_constraintWidth_percent="0.65"
+        app:layout_constraintTop_toBottomOf="@id/textToday"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textToday"
-        app:layout_constraintVertical_bias="0.472" />
+        app:layout_constraintEnd_toStartOf="@id/update" />
 
     <Button
         android:id="@+id/update"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
         android:text="Update"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textToday"
-        app:layout_constraintVertical_bias="0.512" />
+        android:layout_marginTop="32dp"
+        app:layout_constraintWidth_percent="0.3"
+        app:layout_constraintTop_toBottomOf="@id/textToday"
+        app:layout_constraintStart_toEndOf="@id/today_Goal"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
