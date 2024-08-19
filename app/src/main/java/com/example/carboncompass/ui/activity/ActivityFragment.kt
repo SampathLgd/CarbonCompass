@@ -1,5 +1,6 @@
 package com.example.carboncompass.ui.activity
 import CustomAdapter
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,7 +9,9 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.EditText
 import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -32,8 +35,10 @@ class ActivityFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        val activityViewModel =
-//            ViewModelProvider(this).get(ActivityViewModel::class.java)
+
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
+
+
         _binding = FragmentActivityBinding.inflate(inflater, container, false)
         val root: View = binding.root
         val userTypeSpinner: Spinner = binding.spinner
@@ -41,6 +46,14 @@ class ActivityFragment : Fragment() {
         val fuelTypeSpinner: Spinner = binding.fuelType
         val fuelTypeLable: TextView = binding.fuelTypeLable
         val applyChangesBtn: Button = binding.applyChanges
+        val kmsPerDay: EditText = binding.kmsTravelled
+        val electricityConsumed: EditText = binding.electricityConsumed
+        val genderRadio: RadioGroup = binding.gender
+        val dietRadio: RadioGroup = binding.diet
+        val acCount: EditText = binding.numberofAc
+        val refgCount: EditText = binding.numberofRefg
+
+
         //user type spinner config.
         val userTypes = listOf("Individual", "Organization")
         val imagesUserTypes = listOf(R.drawable.baseline_person_24, R.drawable.baseline_business_24)
@@ -54,7 +67,6 @@ class ActivityFragment : Fragment() {
             R.drawable.baseline_directions_walk_24)
         val customAdapter = CustomAdapter(requireActivity(), transportModes, images)
         motSpinner.adapter = customAdapter
-
         //fuel type spinner config.
         ArrayAdapter.createFromResource(
             requireActivity(),
@@ -82,6 +94,18 @@ class ActivityFragment : Fragment() {
                 // Handle the case where nothing is selected, if necessary
             }
         }
+
+        //initiate form
+        if (sharedPref != null) {
+            kmsPerDay.setText(sharedPref.getString("KMS_TRAVELLED", ""))
+            electricityConsumed.setText(sharedPref.getString("ELECTRICITY", ""))
+            motSpinner.setSelection(sharedPref.getLong("MOT",0).toInt())
+            genderRadio.check(sharedPref.getInt("GENDER",-1))
+            dietRadio.check(sharedPref.getInt("DIET",-1))
+            acCount.setText(sharedPref.getString("AC_COUNT",""))
+            refgCount.setText(sharedPref.getString("REFG_COUNT",""))
+        }
+
         applyChangesBtn.setOnClickListener{
             CarbonEmissionMain = 0.0;
             val mot = motSpinner.selectedItem.toString()
@@ -106,6 +130,20 @@ class ActivityFragment : Fragment() {
                     if(diet=="Veg") CarbonEmissionMain+=0.583
                     else CarbonEmissionMain+=0.892
                 }
+            }
+            //put form values in local storage
+            with (sharedPref?.edit()) {
+                this?.putLong("FINAL_EMISSION", java.lang.Double.doubleToRawLongBits(CarbonEmissionMain))
+                this?.putString("ELECTRICITY", electricityConsumed.text.toString())
+                this?.putString("KMS_TRAVELLED", kmsPerDay.text.toString())
+                Log.d(motSpinner.selectedItemId.toString(),"mot test")
+                this?.putLong("MOT", motSpinner.selectedItemId)
+                if(mot=="car") this?.putLong("FUEL_TYPE", fuelTypeSpinner.selectedItemId)
+                this?.putInt("GENDER", genderRadio.checkedRadioButtonId)
+                this?.putInt("DIET", dietRadio.checkedRadioButtonId)
+                this?.putString("AC_COUNT", acCount.text.toString())
+                this?.putString("REFG_COUNT", refgCount.text.toString())
+                this?.apply()
             }
             Log.d(CarbonEmissionMain.toString(),"final Emission")
         }

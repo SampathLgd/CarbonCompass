@@ -236,7 +236,8 @@
                 <RadioButton android:id="@+id/radio_male"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Male" />
+                    android:text="Male"
+                    />
                 <RadioButton android:id="@+id/radio_female"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -346,18 +347,25 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+<!--    <Button-->
+
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        -->
+<!--        android:background="@drawable/rounded_corner"-->
+<!--        />-->
+
     <Button
         android:id="@+id/apply_changes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:text="Apply Changes"
-        app:layout_constraintTop_toBottomOf="@id/fugitive_card"
-        app:layout_constraintStart_toStartOf="parent"
         android:padding="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/rounded_corner"
-        />
+        android:text="Apply Changes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fugitive_card" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
