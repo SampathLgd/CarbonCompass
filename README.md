@@ -22,6 +22,7 @@ A Carbon Footprint Tracker Based On Sustainable Development Goal-13 (Climate Act
   - **Electricity usage**
 - This data is used to calculate the user's carbon footprint and provide suggestions for improvement.
 - The page is well-organized with clear headings for each section (Food, Fuel, Electricity), ensuring easy navigation and straightforward questions that offer a range of possible responses.
+---
 ![image](https://github.com/user-attachments/assets/718e8e1a-30b1-4e6e-866e-699f802041f3)
 ![image](https://github.com/user-attachments/assets/2ab64ab0-d485-4463-8a60-f778d1fb48af)
 
