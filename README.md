@@ -1,7 +1,7 @@
 ![image](https://github.com/user-attachments/assets/1545e684-7dd3-4afb-baf2-86b2ae98c057)
 # CarbonCompass
 A Carbon Footprint Tracker Based On Sustainable Development Goal-13 (Climate Action)
-0
+
 
 ## APP FEATURES:
 
@@ -9,11 +9,12 @@ A Carbon Footprint Tracker Based On Sustainable Development Goal-13 (Climate Act
 - **Purpose**: The Home Page allows users to set and view their goals for the week.
 - Each goal has a progress tracker that updates as users complete tasks related to their goals. This could be represented by percentages or visual indicators such as progress bars or checkmarks.
 - Users can update their goals throughout the week. For instance, if they achieve a goal early, they can set a new one or adjust the difficulty of current goals.
+---
   ![image](https://github.com/user-attachments/assets/42dcef6b-2e5c-491a-97c7-be2f52598c30)
   ![image](https://github.com/user-attachments/assets/fc0f4504-ccc8-4699-b962-5bdc2625403a)
 
 
-
+---
 ### ADD ACTIVITY PAGE:
 - **Purpose**: This page collects data on the user’s lifestyle, focusing on:
   - **Food choices**
